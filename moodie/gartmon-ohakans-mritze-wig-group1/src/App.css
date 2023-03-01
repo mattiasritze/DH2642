@@ -1,0 +1,384 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Titillium+Web:wght@400;600&display=swap');
+
+
+.App {
+  text-align: center;
+}
+
+@layer base {
+  html {
+    font-family: 'Pacifico'
+  }
+}
+
+.snow, .snow:before, .snow:after {
+  position: absolute;
+  top: -650px;
+  left: 0;
+  bottom: 0;
+  max-height: 100%;
+  right: 0;
+  z-index: -4;
+  background-image: 
+  radial-gradient(4px 4px at 100px 50px, #fff , transparent), 
+  radial-gradient(6px 6px at 200px 150px, #fff, transparent), 
+  radial-gradient(3px 3px at 300px 250px, #fff 50%, transparent), 
+  radial-gradient(4px 4px at 400px 350px, #fff 50%, transparent), 
+  radial-gradient(6px 6px at 500px 100px, #fff 50%, transparent), 
+  radial-gradient(3px 3px at 50px 200px, #fff 50%, transparent), 
+  radial-gradient(4px 4px at 150px 300px, #fff 50%, transparent), 
+  radial-gradient(6px 6px at 250px 400px, #fff 50%, transparent), 
+  radial-gradient(3px 3px at 350px 500px, #fff 50%, transparent);
+  background-size: 650px 650px;
+  animation: snow 3s linear infinite;
+  content: "";
+}
+
+.snow:after {
+  margin-left: -250px;
+  opacity: 0.5;
+  filter: blur(2px);
+  animation-duration: 6s;
+  animation-direction: reverse;
+}
+
+.snow:before {
+	margin-left: -350px;
+  opacity: 0.7;
+  filter: blur(1px);
+  animation-duration: 9s;
+  animation-direction: reverse;
+}
+
+@keyframes snow {
+  to {
+    transform: translateY(650px);
+  }
+}
+
+.rain{
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  background-image: url(./assets/rain.png);
+  animation: rain 0.1s reverse linear infinite;
+  content: "";
+}
+
+.rain-container {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -3;
+}
+
+@keyframes rain{
+  0%{
+      background-position: 0% 0%;
+  }
+  100%{
+      background-position: 20% 100%;
+  }
+}
+.thunder {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(./assets/thunder.png);
+  background-size: cover;
+  top: -350px;
+  z-index: -4;
+  transform: rotate(180deg);
+  animation: thunder 4s linear infinite;
+  opacity: 1;
+}
+@keyframes thunder{
+  0%{
+      opacity: 0;
+  }
+  20%{
+      opacity: 0;
+  }
+  21%{
+      opacity: 1;
+  }
+  25%{
+      opacity: 0;
+  }
+  30%{
+      opacity: 0;
+  }
+  31%{
+      opacity: 1;
+  }
+  35%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 0;
+  }
+}
+
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background: url('assets/cloud.png');
+  background-size: cover;
+  z-index: -4;
+  opacity: 0.6;
+  animation: animate 120s linear infinite;
+}
+
+@keyframes animate {
+
+  0% {
+    background-position: 0px;
+  }
+
+  100% {
+    background-position: 5440px;
+  }
+
+}
+
+.drizzle, .drizzle:before, .drizzle:after {
+  position: absolute;
+  top: -650px;
+  left: 0;
+  bottom: 0;
+  max-height: 100%;
+  right: 0;
+  z-index: -4;
+  background-image: 
+  radial-gradient(1px 7px at 650px 650px, #fff 50%, transparent),
+  radial-gradient(1px 7px at 500px 100px, #fff 50%, transparent), 
+  radial-gradient(1px 7px at 50px 200px, #fff 50%, transparent), 
+  radial-gradient(1px 7px at 150px 300px, #fff 50%, transparent), 
+  radial-gradient(1px 7px at 250px 400px, #fff 50%, transparent), 
+  radial-gradient(1px 7px at 350px 500px, #fff 50%, transparent);
+  background-size: 650px 650px;
+  animation: drizzle 0.5s linear infinite;
+  content: "";
+}
+
+.drizzle:after {
+  margin-left: -250px;
+  opacity: 0.5;
+  filter: blur(2px);
+  animation-duration: 1s;
+}
+
+.drizzle:before {
+	margin-left: -350px;
+  opacity: 0.7;
+  filter: blur(1px);
+  animation-duration: 1s;
+}
+
+@keyframes drizzle {
+  to {
+    transform: translateY(650px);
+  }
+}
+
+.mist {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -3;
+}
+
+.mist-container {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  z-index: -3;
+}
+
+.mist-img {
+  position: absolute;
+  min-height: 100%;
+  width: 300vw;
+  z-index: 2;
+}
+
+.mist-img-first {
+  background: url("./assets/fog-1.png");
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-position: center;
+  animation: marquee 60s linear infinite;
+}
+
+.mist-img-second {
+  background: url("./assets/fog-2.png");
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-position: center;
+  animation: mist 30s linear infinite;
+}
+
+@keyframes mist {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-200vw, 0, 0);
+  }
+}
+
+.center-center {
+  height: 100%;
+  width: 100%;
+  display:flex;
+  align-items: middle;
+  justify-content: center;
+
+}
+
+.center-fullscreen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.center-home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+}
+
+/*FÖR INLOGGNING */
+.login {
+  height: 100vh;    /*Så login hamnar i centrum*/
+  width: 100xvw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.loginFormation {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.loginBox {
+  padding: 10px;
+  margin-bottom: 3px; /*Mellanrum mellan rutorna*/
+}
+.loginButton {
+  padding: 10px;
+  margin-bottom: 3px;
+  background-color: rgb(98, 147, 238);
+}
+
+.login {
+  margin-top: 3px;
+}
+
+
+
+
+@keyframes ldio-ndvytzom9cg {
+  0% { opacity: 1 }
+  100% { opacity: 0 }
+}
+.ldio-ndvytzom9cg div {
+  left: 94px;
+  top: 48px;
+  position: absolute;
+  animation: ldio-ndvytzom9cg linear 1s infinite;
+  width: 12px;
+  height: 24px;
+  border-radius: 6px / 12px;
+  transform-origin: 6px 52px;
+}.ldio-ndvytzom9cg div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -0.9166666666666666s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -0.8333333333333334s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.75s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.6666666666666666s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.5833333333333334s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.5s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.4166666666666667s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.3333333333333333s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.25s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.16666666666666666s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.08333333333333333s;
+  background: #fdfdfd;
+}.ldio-ndvytzom9cg div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+  background: #fdfdfd;
+}
+.loadingio-spinner-spinner-agb8os98fdn {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+}
+.ldio-ndvytzom9cg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-ndvytzom9cg div { box-sizing: content-box; }
